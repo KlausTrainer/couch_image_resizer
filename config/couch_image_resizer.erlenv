@@ -1,0 +1,5 @@
+{port, 5985}.
+{address, "127.0.0.1"}.
+{image_cache_size, "128MB"}.
+{sasl_config, "config/elog.config"}.
+{heart_command, "./start.sh config/couch_image_scaler.erlenv"}.

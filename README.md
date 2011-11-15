@@ -46,7 +46,7 @@ Everything that is a [valid ImageMagick geometry](http://www.imagemagick.org/scr
 
 As an alternative to the `resize` query parameter value, the geometry can also be specified as `X-Imagemagick-Resize` request header value.
 
-## Credit ##
+## Credits ##
 
 `couch_image_resizer` is built off the following libraries:
 

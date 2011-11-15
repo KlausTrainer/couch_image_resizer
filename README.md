@@ -44,6 +44,8 @@ Assume that you have got the image `profile.jpg` attached to your document `user
 
 Everything that is a [valid ImageMagick geometry](http://www.imagemagick.org/script/command-line-processing.php?ImageMagick=e43g49ls83iklaldahr2bb9l06#geometry) is supported for the `resize` query parameter value. For instance, if you would like the image to have an area of exactly 400 pixel, simply specify `400@` as the `resize` query parameter value.
 
+As an alternative to the `resize` query parameter value, the geometry can also be specified as `X-Imagemagick-Resize` request header value.
+
 ## Credit ##
 
 `couch_image_resizer` is built off the following libraries:

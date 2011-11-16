@@ -12,8 +12,10 @@
 %% @spec start(_Type, _StartArgs) -> ServerRet
 %% @doc application start callback for couch_image_resizer.
 start(_Type, _StartArgs) ->
+    application:start(sasl),
+    application:start(crypto),
+    application:start(ibrowse),
     read_config(),
-    couch_image_resizer_deps:ensure(),
     CacheSize = couch_image_resizer:get_app_env(image_cache_size, "128MB"),
     term_cache_ets:start_link([{name, ?IMAGE_CACHE}, {size, CacheSize}]),
     couch_image_resizer_sup:start_link().

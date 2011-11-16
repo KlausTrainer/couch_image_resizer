@@ -5,16 +5,15 @@
 
 -include("couch_image_resizer.hrl").
 
--export([start/1, stop/0, loop/2]).
+-export([start/1, stop/0, loop/1]).
 
 %% External API
 
 start(Options) ->
-    {DocRoot, Options1} = get_option(docroot, Options),
 
     Loop = fun(Req) ->
                try
-                   ?MODULE:loop(Req, DocRoot)
+                   ?MODULE:loop(Req)
                catch
                Type:What ->
                    Report = ["web request failed", {path, Req:get(raw_path)},
@@ -25,12 +24,12 @@ start(Options) ->
                end
            end,
 
-    mochiweb_http:start([{name, ?MODULE}, {loop, Loop} | Options1]).
+    mochiweb_http:start([{name, ?MODULE}, {loop, Loop} | Options]).
 
 stop() ->
     mochiweb_http:stop(?MODULE).
 
-loop(Req, _DocRoot) ->
+loop(Req) ->
     RawPath = Req:get(raw_path),
     ContentType = {"Content-Type", "text/plain; charset=utf-8"},
 
@@ -138,6 +137,3 @@ is_valid_geometry(Str) ->
 make_temp_file_name() ->
     {A, B, C} = now(),
     "/tmp/" ++ lists:flatten(io_lib:format("~p~p~p", [A, B, C])).
-
-get_option(Option, Options) ->
-    {proplists:get_value(Option, Options), proplists:delete(Option, Options)}.

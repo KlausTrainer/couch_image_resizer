@@ -47,9 +47,7 @@ init([]) ->
 web_specs() ->
     Port = couch_image_resizer:get_app_env(port, 5985),
     Address = couch_image_resizer:get_app_env(address, "127.0.0.1"),
-    WebConfig = [{ip, Address},
-                 {port, Port},
-                 {docroot, couch_image_resizer_deps:local_path(["priv", "www"])}],
+    WebConfig = [{ip, Address}, {port, Port}],
     {couch_image_resizer_web,
      {couch_image_resizer_web, start, [WebConfig]},
      permanent, 5000, worker, dynamic}.

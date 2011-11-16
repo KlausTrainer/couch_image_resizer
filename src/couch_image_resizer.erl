@@ -16,10 +16,6 @@ start([ConfigPath]) ->
 %% @spec start() -> ok
 %% @doc Start the couch_image_resizer server.
 start() ->
-    couch_image_resizer_deps:ensure(),
-    ensure_started(sasl),
-    ensure_started(crypto),
-    ensure_started(ibrowse),
     application:start(couch_image_resizer).
 
 %% @spec stop() -> ok
@@ -45,14 +41,4 @@ get_app_env(Opt, Default) ->
         {ok, [[Val|_]]} -> Val;
         error -> Default
         end
-    end.
-
-%% Internal API
-
-ensure_started(App) ->
-    case application:start(App) of
-        ok ->
-            ok;
-        {error, {already_started, App}} ->
-            ok
     end.

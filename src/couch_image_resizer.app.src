@@ -1,9 +1,13 @@
 %% -*- erlang -*-
-{application, couch_image_resizer,
- [{description, "couch_image_resizer"},
-  {vsn, "0.1"},
-  {modules, []},
-  {registered, []},
-  {mod, {'couch_image_resizer_app', []}},
-  {env, []},
-  {applications, [kernel, stdlib, sasl, ibrowse]}]}.
+{
+  application, couch_image_resizer,
+  [
+    {description, "couch_image_resizer"},
+    {vsn, "0.1"},
+    {modules, []},
+    {registered, []},
+    {mod, {'couch_image_resizer_app', []}},
+    {env, []},
+    {applications, [kernel, stdlib]}
+  ]
+}.

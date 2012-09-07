@@ -1,7 +1,7 @@
 PREFIX:=../
 DEST:=$(PREFIX)$(PROJECT)
 
-REBAR=./rebar
+REBAR:=$(shell which rebar || echo ./rebar)
 
 all: log
 	@$(REBAR) get-deps compile
